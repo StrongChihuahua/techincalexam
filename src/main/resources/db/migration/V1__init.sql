@@ -1,0 +1,7 @@
+--create table address (id bigint not null auto_increment, address_1 varchar(255) not null, address_2 varchar(255) not null, is_primary bit not null, employee_id bigint, primary key (id)) engine=InnoDB
+--create table contacts (id bigint not null auto_increment, is_primary bit not null, value varchar(255) not null, employee_id bigint, primary key (id)) engine=InnoDB
+--create table employees (id bigint not null auto_increment, birth_date datetime(6) not null, date_hired datetime(6) not null, first_name varchar(255) not null, gender enum ('FEMALE','MALE','OTHER') not null, last_name varchar(255) not null, marital_status enum ('DIVORCED','MARRIED','SINGLE','WIDOWED') not null, middle_name varchar(255) not null, position varchar(255) not null, primary key (id)) engine=InnoDB
+--create table users (id bigint not null auto_increment, password varchar(255) not null, role enum ('ADMIN','STANDARD_USER') not null, username varchar(255) not null, primary key (id)) engine=InnoDB
+
+--alter table address add constraint FKq95h5xhq4by6gadnvlkvtbewl foreign key (employee_id) references employees (id)
+--alter table contacts add constraint FKsg77mdvmgqw3a1ep2pnpgnsk0 foreign key (employee_id) references employees (id)
