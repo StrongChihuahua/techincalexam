@@ -29,7 +29,7 @@ Build the project
 
 ## Configuration
 
-Open the `src/main/resources/application.properties` file and modify these lines:
+Open the `src/main/resources/application.properties` file and add/modify these lines:
 
 ```
 spring.datasource.url=jdbc:mysql://<server>:<port>/<database_name>?
