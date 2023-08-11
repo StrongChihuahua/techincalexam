@@ -41,7 +41,7 @@ public class ViewController {
     }
 
     @GetMapping("/create-employee")
-    public ModelAndView mutateEmployee (Map<String, Object> model) {
+    public ModelAndView createEmployee (Map<String, Object> model) {
 //        List<Employee> employees = service.findAll();
 //
 //        List<EmployeeTableDTO> employeeDTOs = new ArrayList<>();
@@ -50,7 +50,9 @@ public class ViewController {
 //            employeeDTOs.add(service.employeeTable(employee));
 //        }
 //        model.put("id", id);
-        return new ModelAndView("create-employee", model);
+        Employee employee = new Employee();
+        model.put("employee", employee);
+        return new ModelAndView("edit-employee", model);
     }
 
     @GetMapping("/edit-employee/{id}")
