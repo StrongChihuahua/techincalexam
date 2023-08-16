@@ -15,23 +15,23 @@ public class Employee {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
-        @Column(name = "first_name", nullable = false)
+        @Column(name = "first_name", nullable = false, length = 20)
         private String firstName;
-        @Column(name = "middle_name", nullable = false)
+        @Column(name = "middle_name", nullable = false, length = 20)
         private String middleName;
-        @Column(name = "last_name", nullable = false)
+        @Column(name = "last_name", nullable = false, length = 20)
         private String lastName;
 
         @JsonFormat(pattern = "yyyy-MM-dd")
         @Column(name = "birth_date", nullable = false)
         private LocalDate birthdate;
-        @Column(name = "gender", nullable = false)
+        @Column(name = "gender", nullable = false, length = 20)
         @Enumerated(EnumType.STRING)
         private GenderEnum gender;
-        @Column(name = "marital_status", nullable = false)
+        @Column(name = "marital_status", nullable = false, length = 20)
         @Enumerated(EnumType.STRING)
         private MaritalStatusEnum maritalStatus;
-        @Column(name = "position", nullable = false)
+        @Column(name = "position", nullable = false, length = 20)
         private String position;
 
         @JsonFormat(pattern = "yyyy-MM-dd")
@@ -149,9 +149,4 @@ public class Employee {
         public String getPosition() {
                 return position;
         }
-
-//        @Transient
-//        public String customGetterFname() {
-//                return firstName;
-//        }
 }

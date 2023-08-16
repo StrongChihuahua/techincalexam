@@ -49,17 +49,6 @@ input AddressUpdateInput {
     isPrimary: Boolean!
 }
 
-type Query {
-    employees: [Employee]
-    employee(id: ID!): Employee
-}
-
-type Mutation {
-    employee(request: EmployeeInput!): Employee!
-    updateEmployee(id: ID!, request: EmployeeUpdateInput!): Employee!
-    deleteEmployee(id: ID!): String!
-}
-
 input EmployeeInput {
     firstName: String!
     middleName: String!
@@ -85,3 +74,24 @@ input EmployeeUpdateInput {
     addresses: [AddressUpdateInput]
 }
 
+
+type EmployeeTable {
+    id: ID!
+    name: String!
+    primaryAddress: String!
+    primaryContact: String!
+    age: Int!
+    yearsInTheCompany: String!
+}
+
+type Query {
+    employees: [Employee]
+    employee(id: ID!): Employee
+    employeeTable: [EmployeeTable]
+}
+
+type Mutation {
+    employee(request: EmployeeInput!): Employee!
+    updateEmployee(id: ID!, request: EmployeeUpdateInput!): Employee!
+    deleteEmployee(id: ID!): String!
+}

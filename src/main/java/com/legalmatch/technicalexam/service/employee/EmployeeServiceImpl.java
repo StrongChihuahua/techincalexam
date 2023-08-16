@@ -16,17 +16,13 @@ import java.util.Optional;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.stream.Collectors;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeRepository repository;
-//
-//    @Autowired
-//    private ContactRepository contactRepository;
-//
+
     @Override
     public Employee create(Employee e) {
         return repository.save(e);
@@ -68,7 +64,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         Optional<Employee> employee = repository.findById(id);
 
         if(employee.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Content Not Found!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee Not Found!");
         }
 
         repository.deleteById(id);
@@ -79,8 +75,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeTableDTO employeeTable(Employee e) {
 
         EmployeeTableDTO empDto = new EmployeeTableDTO();
-//        e.get
-//        empDto.s
+
         Period periodBd = Period.between(e.getBirthdate(), LocalDate.now());
         Period periodYc = Period.between(e.getDateHired(), LocalDate.now());
 
@@ -96,8 +91,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         if (primaryContact.isPresent()) {
             Contact primary = primaryContact.get();
-            empDto.setPrimaryContact(primary);
-
+            empDto.setPrimaryContact(primary.getValue());
         }
 
         Optional<Address> primaryAddress = e.getAddresses().stream()
@@ -106,8 +100,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         if (primaryAddress.isPresent()) {
             Address primary = primaryAddress.get();
-            empDto.setPrimaryAddress(primary);
-
+            empDto.setPrimaryAddress(primary.getAddressOne() + (primary.getAddressTwo() != null && !primary.getAddressTwo().isEmpty() ? ", " + primary.getAddressTwo() : ""));
         }
 
         return empDto;
@@ -129,15 +122,4 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         return yearsInTheCompany;
     }
-
-//    @Override
-//    public List<Contact> getContactsById (Long id) {
-//        Optional<Employee> employee = repository.findById(id);
-//
-//        if(employee.isEmpty()) {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Content Not Found!");
-//        }
-//        return employee.get().getContacts();
-//    }
-//
 }

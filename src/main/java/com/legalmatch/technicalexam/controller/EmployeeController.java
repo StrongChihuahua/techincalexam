@@ -12,12 +12,9 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class EmployeeController implements GraphQLQueryResolver, GraphQLMutationResolver {
@@ -35,8 +32,21 @@ public class EmployeeController implements GraphQLQueryResolver, GraphQLMutation
     }
 
     @QueryMapping
-    public Employee employee(@Argument("id") Long id) throws Exception {
+    public Employee employee(@Argument("id") Long id) {
         return service.findById(id);
+    }
+
+    @QueryMapping
+    public List<EmployeeTableDTO> employeeTable() {
+        List<Employee> employees = service.findAll();
+
+        List<EmployeeTableDTO> employeeDTOs = new ArrayList<>();
+
+        for (Employee employee : employees) {
+            employeeDTOs.add(service.employeeTable(employee));
+        }
+
+        return employeeDTOs;
     }
 
     @MutationMapping

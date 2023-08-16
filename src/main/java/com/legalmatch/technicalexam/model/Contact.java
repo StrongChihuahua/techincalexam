@@ -1,7 +1,6 @@
 package com.legalmatch.technicalexam.model;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -22,13 +21,6 @@ public class Contact {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="employee_id")
     private Employee employee;
-
-//    @ManyToOne()
-//    @JoinColumn(name = "employee_id")
-//    private Employee employee;
-//    @Column(name = "primary", nullable = false)
-//    private boolean primaryContact;
-
 
     public Contact() {}
     public Contact( String value, boolean isPrimary) {
@@ -62,8 +54,4 @@ public class Contact {
     public boolean getIsPrimary() {
         return isPrimary;
     }
-
-    //    public Employee getEmployee() {
-//        return employee;
-//    }
 }

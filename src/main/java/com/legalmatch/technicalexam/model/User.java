@@ -1,7 +1,5 @@
 package com.legalmatch.technicalexam.model;
 
-
-import jakarta.annotation.PostConstruct;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,22 +10,21 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username", nullable = false)
+    @Column(name = "username", unique = true, nullable = false)
     private String username;
 
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "role", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private RoleEnum roleEnum;
+    @Column(name = "roles", nullable = false)
+    private String roles;
 
     public User () {}
 
-    public User (String username, String password, RoleEnum roleEnum) {
+    public User (String username, String password, String roles) {
         this.username = username;
         this.password = password;
-        this.roleEnum = roleEnum;
+        this.roles = roles;
     }
 
 
@@ -55,18 +52,12 @@ public class User {
         this.password = password;
     }
 
-    public RoleEnum getRole() {
-        return roleEnum;
+    public String getRole() {
+        return roles;
     }
 
-    public void setRole(RoleEnum roleEnum) {
-        this.roleEnum = roleEnum;
-    }
-
-    @PostConstruct
-    private void init() {
-        System.out.println("HEYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY!!!!");
-
+    public void setRole(String roles) {
+        this.roles = roles;
     }
 
 }

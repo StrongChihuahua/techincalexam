@@ -1,8 +1,8 @@
 package com.legalmatch.technicalexam;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
 
 @SpringBootApplication
 public class TechnicalexamApplication extends SpringBootServletInitializer {
@@ -11,5 +11,4 @@ public class TechnicalexamApplication extends SpringBootServletInitializer {
 
 		SpringApplication.run(TechnicalexamApplication.class, args);
 	}
-
 }

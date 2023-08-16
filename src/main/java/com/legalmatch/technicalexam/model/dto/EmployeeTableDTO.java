@@ -1,21 +1,18 @@
 package com.legalmatch.technicalexam.model.dto;
 
-import com.legalmatch.technicalexam.model.Address;
-import com.legalmatch.technicalexam.model.Contact;
-
 public class EmployeeTableDTO {
 
     private Long id;
     private String name;
     private Integer age;
-    private Address primaryAddress;
+    private String primaryAddress;
 
-    private Contact primaryContact;
+    private String primaryContact;
     private String yearsInTheCompany;
 
     public EmployeeTableDTO() {}
 
-    public EmployeeTableDTO(Long id, String name, Integer age, Address primaryAddress, Contact primaryContact, String yearsInTheCompany) {
+    public EmployeeTableDTO(Long id, String name, Integer age, String primaryAddress, String primaryContact, String yearsInTheCompany) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -47,19 +44,19 @@ public class EmployeeTableDTO {
         this.age = age;
     }
 
-    public Address getPrimaryAddress() {
+    public String getPrimaryAddress() {
         return primaryAddress;
     }
 
-    public void setPrimaryAddress(Address primaryAddress) {
+    public void setPrimaryAddress(String primaryAddress) {
         this.primaryAddress = primaryAddress;
     }
 
-    public Contact getPrimaryContact() {
+    public String getPrimaryContact() {
         return primaryContact;
     }
 
-    public void setPrimaryContact(Contact primaryContact) {
+    public void setPrimaryContact(String primaryContact) {
         this.primaryContact = primaryContact;
     }
 
